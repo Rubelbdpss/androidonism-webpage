@@ -19,7 +19,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 
 <dom-module id="my-app">
 
@@ -29,13 +31,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       :host {
         display: block;
-        --app-primary-color: #4285f4;
+        --app-primary-color: #4CAF50;
         --app-secondary-color: black;
       }
-
       app-header {
-        background-color: var(--app-primary-color);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 212px;
         color: #fff;
+        background-color: var(--app-primary-color);
+        --app-header-background-front-layer: {
+          background-image: url(//1.bp.blogspot.com/-dTliKTChbPA/VXh2idc5lPI/AAAAAAAABxg/xoPCoV_UeuY/s1600/04_blog_3banner.png);
+          background-position: left center;
+        };
+        --app-header-background-rear-layer: {
+          /*background-image: url(//unsplash.com/photos/5Ntkpxqt54Y/download);*/
+          background-position: left center;
+        };
       }
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
@@ -73,30 +87,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <!-- Drawer content -->
       <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
+        <app-toolbar opened>
+        <iron-image src="../images/app-icon-32.png"></iron-image><h4 title>&nbsp; Androidonism</h4></app-toolbar>
+        <hr>
+
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
-          <a name="new-view" href="/new-view">New View</a>
+          <a name="home-view" href="/home-view"><iron-icon icon="home"></iron-icon>&nbsp;Home</a>
+          <a name="resources-view" href="/resources-view"><iron-icon icon="description"></iron-icon>&nbsp;Android Resources</a>
+          <a name="library-view" href="/library-view"><iron-icon icon="book"></iron-icon>&nbsp;Library</a>
+          <a name="blog-view" href="/blog-view"><iron-icon icon="chrome-reader-mode"></iron-icon>&nbsp;My Blog</a>
+          <a name="forum-view" href="/forum-view"><iron-icon icon="question-answer"></iron-icon>&nbsp;Forum</a>
+          <a name="cv-view" href="/cv-view"><iron-icon icon="card-membership"></iron-icon>&nbsp;CV</a>
+          <a name="about-view" href="/about-view"><iron-icon icon="face"></iron-icon>&nbsp;About</a>
         </iron-selector>
       </app-drawer>
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
-
-        <app-header condenses reveals effects="waterfall">
+        <app-header condenses reveals effects="waterfall resize-title blend-background parallax-background">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>My App</div>
+            <h4 condensed-title>Android Developers Blog</h4>
+            <!-- <paper-icon-button icon="search"></paper-icon-button> -->
+          </app-toolbar>
+          <app-toolbar>
+            <h1 title></h1>
           </app-toolbar>
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-            <my-new-view name="new-view"></my-new-view>
+          <my-home-view name="home-view"></my-home-view>
+          <my-resources-view name="resources-view"></my-resources-view>
+          <my-library-view name="library-view"></my-library-view>
+          <my-blog-view name="blog-view"></my-blog-view>
+          <my-forum-view name="forum-view"></my-forum-view>
+          <my-cv-view name="cv-view"></my-cv-view>
+          <my-about-view name="about-view"></my-about-view>
         </iron-pages>
 
       </app-header-layout>
@@ -126,7 +152,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'home-view';
       },
 
       _pageChanged: function(page) {

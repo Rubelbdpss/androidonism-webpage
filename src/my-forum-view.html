@@ -1,0 +1,42 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="my-forum-view">
+    
+      <!-- Defines the element's style and local DOM -->
+    <template>
+        <style>
+        :host {
+                    display: block;
+                    padding: 16px;
+                                          
+        }
+        paper-button.green {
+          background-color: var(--paper-green-500);
+          color: white;
+        }
+        paper-button.green[active] {
+          background-color: var(--paper-red-500);
+        }
+        </style>
+        <h1>Android Forum</h1>
+        <p>Will be updated soon</p>
+<!--           <paper-slider min="-100" max="100" value="50"></paper-slider>
+          <paper-button raised>raised</paper-button>
+          <paper-button toggles raised class="custom green">toggles</paper-button> -->
+  </template>
+          
+            <!-- Creates the element's prototype and registers it -->
+              <script>
+Polymer({
+          is: 'my-forum-view',
+          properties: {
+                      route: Object
+                                
+          }
+              
+});
+  </script>
+  
+</dom-module>
