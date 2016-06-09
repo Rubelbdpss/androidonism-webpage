@@ -4,10 +4,10 @@
   "fragments": [
     "src/my-home-view.html",
     "src/my-resources-view.html",
-    "src/my-library-view.html"
-    "src/my-blog-view.html"
-    "src/my-forum-view.html"
-    "src/my-cv-view"
+    "src/my-library-view.html",
+    "src/my-blog-view.html",
+    "src/my-forum-view.html",
+    "src/my-cv-view.html",
     "src/my-about-view.html"
   ]
 }
