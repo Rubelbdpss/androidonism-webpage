@@ -1,0 +1,77 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+</head><body><dom-module id="my-app">
+
+  <template>
+
+    <style>:host{display:block;--app-primary-color:#4CAF50;--app-secondary-color:black;}app-header{position:fixed;top:0;left:0;width:100%;height:212px;color:#fff;background-color:var(--app-primary-color);--app-header-background-front-layer:{background-image:url(//1.bp.blogspot.com/-dTliKTChbPA/VXh2idc5lPI/AAAAAAAABxg/xoPCoV_UeuY/s1600/04_blog_3banner.png);background-position:left center;};--app-header-background-rear-layer:{background-position:left center;};}app-header paper-icon-button{--paper-icon-button-ink-color:white;}.drawer-list{margin:0 20px;}.drawer-list a{display:block;padding:0 16px;line-height:40px;text-decoration:none;color:var(--app-secondary-color);}.drawer-list a.iron-selected{color:black;font-weight:bold;}.drawer-list a.subroute{padding-left:32px;}</style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+    <app-drawer-layout fullbleed="">
+
+      
+      <app-drawer>
+        <app-toolbar opened="">
+        <iron-image src="../images/app-icon-32.png"></iron-image><h4 title="">&nbsp; Androidonism</h4></app-toolbar>
+        <hr>
+
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="home-view" href="/home-view"><iron-icon icon="home"></iron-icon>&nbsp;Home</a>
+          <a name="resources-view" href="/resources-view"><iron-icon icon="description"></iron-icon>&nbsp;Android Resources</a>
+          <a name="library-view" href="/library-view"><iron-icon icon="book"></iron-icon>&nbsp;Library</a>
+          <a name="blog-view" href="/blog-view"><iron-icon icon="chrome-reader-mode"></iron-icon>&nbsp;My Blog</a>
+          <a name="forum-view" href="/forum-view"><iron-icon icon="question-answer"></iron-icon>&nbsp;Forum</a>
+          <a name="cv-view" href="/cv-view"><iron-icon icon="card-membership"></iron-icon>&nbsp;CV</a>
+          <a name="about-view" href="/about-view"><iron-icon icon="face"></iron-icon>&nbsp;About</a>
+        </iron-selector>
+      </app-drawer>
+
+      
+      <app-header-layout has-scrolling-region="">
+        <app-header condenses="" reveals="" effects="waterfall resize-title blend-background parallax-background">
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle=""></paper-icon-button>
+            <h4 condensed-title="">Android Developers Blog</h4>
+            
+          </app-toolbar>
+          <app-toolbar>
+            <h1 title=""></h1>
+          </app-toolbar>
+        </app-header>
+
+        <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+          <my-home-view name="home-view"></my-home-view>
+          <my-resources-view name="resources-view"></my-resources-view>
+          <my-library-view name="library-view"></my-library-view>
+          <my-blog-view name="blog-view"></my-blog-view>
+          <my-forum-view name="forum-view"></my-forum-view>
+          <my-cv-view name="cv-view"></my-cv-view>
+          <my-about-view name="about-view"></my-about-view>
+        </iron-pages>
+
+      </app-header-layout>
+
+    </app-drawer-layout>
+
+  </template>
+
+  <script>Polymer({is:"my-app",properties:{page:{type:String,reflectToAttribute:!0,observer:"_pageChanged"}},observers:["_routePageChanged(routeData.page)"],_routePageChanged:function(e){this.page=e||"home-view"},_pageChanged:function(e){this.importHref(this.resolveUrl("my-"+e+".html"),null,null,!0)}});</script>
+
+</dom-module>
+</body></html>

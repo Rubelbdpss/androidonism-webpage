@@ -1,0 +1,38 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+
+</head><body><dom-module id="my-blog-view">
+
+  <template>
+
+    <style>:host{display:block;padding:10px;}.card{box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);padding:16px;margin:24px;border-radius:5px;background-color:#fff;color:#757575;}.circle{display:inline-block;height:64px;width:64px;border-radius:50%;background:#ddd;line-height:64px;font-size:30px;color:#555;text-align:center;}h1{font-size:22px;margin:16px 0;color:#212121;}</style>
+
+    <div class="card">
+      <div class="circle">B</div>
+      <h1>Blog</h1>
+      <p>This section contain a generall blog.</p>
+    </div>
+
+    <div class="card">
+      <h1>Welcome</h1>
+      <p>Greetings Focks!</p>
+      <p>This webspace is dedicated to android development. Though android framework is very well documented.<br>
+      But most of it are very much fragmented, which causes suffering for developers. Even for advanced developer it 
+      get troublesome task to keep track of newest libraries.<br> This web app serve as single point solution to all 
+      android related happenings.</p>
+    </div> 
+    <div class="card">
+      <h1>5 Tips for beginners</h1>
+      <p>Are you a new android developer or you planing to be, here are 5 tips that would be helpful:<br>
+      </p><ol type="1"><li>before beginning android development it's always recommended to learn java first.<br>note:for those who know programming in some other languages, knowledge of classes and inheritance is enough to begin.</li>
+      <li>android studio is the most recommended ide for android development. most of the beginners finds android studio very complex and slow though.<br>ps:belive me over time you will realise this is the best you can imagine from an android ide</li>
+      <li>first build and run in android studio on most of devices are 10 time slower than subsequent build and run.</li>
+      <li>avoid video tutorial rather try <a href="https://developer.android.com/guide/index.html">official documentation</a> or by forking others git projects to learn android development.</li>
+      <li>android is most famous framework available today. always try to figure out solutions by googling first.<br>note: most of the problems were already asked on forum like stack-overflow</li>
+      </ol>
+      <p></p>
+     </div>
+  </template>
+
+  <script>Polymer({is:"my-blog-view"});</script>
+
+</dom-module></body></html>
